@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var NEAR = 0, FAR = 20;
+            var socket = io();
+            socket.on("measurement", function(measurement) {
+                $("#distance").text(measurement);
+                if (measurement >= NEAR && measurement <= FAR) {
+                    $("body").css({
+                        "background": "#B7F2A5"
+                    });
+                }
+                else {
+                    $("body").css({
+                        "background": "#F2A5A5"
+                    });
+                }
+            });
+        </script>
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+            p {
+                text-align: center;
+            }
+            p#distance {
+                font-size: 242px;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="distance"></p>
+    </body>
+</html>

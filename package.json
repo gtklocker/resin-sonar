@@ -1,0 +1,13 @@
+{
+  "name": "rpi-sonar",
+  "description": "Simple rpi app the utilizes the ultrasonic sonar",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "^4.12.3",
+    "socket.io": "^1.3.5"
+  }
+}
