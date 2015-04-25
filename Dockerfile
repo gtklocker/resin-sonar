@@ -2,7 +2,7 @@ FROM resin/rpi-raspbian:jessie
 
 RUN apt-get update \
     # dependencies for wiringpi
-	&& apt-get install -y git-core gcc make \
+    && apt-get install -y git-core gcc make \
     # dependencies for rpi-sonar
     && apt-get install -y nodejs npm
 
