@@ -4,7 +4,7 @@ var io = require("socket.io")(http);
 var exec = require("child_process").exec;
 
 function requestDistance(callback) {
-    exec("sudo ./sonar", function(err, stdout, stderr) {
+    exec("sudo " + __dirname + "/sonar", function(err, stdout, stderr) {
         callback(parseInt(stdout));
     });
 }
