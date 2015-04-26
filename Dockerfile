@@ -15,6 +15,4 @@ ADD . /app
 RUN cd /app \
     && make
 
-EXPOSE 8080
-
 CMD ["nodejs", "/app/server.js"]
