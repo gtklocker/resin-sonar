@@ -1,7 +1,7 @@
 .PHONY: all clean
 
 all:
-	cc -o sonar sonar.c -lwiringPi
+	cc -o sonar sonar.c -lwiringPi -lrt
 	npm install
 
 clean:
