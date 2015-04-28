@@ -30,8 +30,8 @@ int main() {
 
         digitalWrite(TRIGGER_PIN, LOW);
         long nanoPulseWidth = pulseIn(ECHO_PIN, 1);
-        long duration = (nanoPulseWidth * 0.001) / 58.2;
-        printf("%ld\n", duration);
+        long distance = (nanoPulseWidth * 0.001) / 58.2;
+        printf("%ld\n", distance);
 
         delay(50);
     }
