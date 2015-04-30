@@ -1,9 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <wiringPi.h>
 
-#define TRIGGER_PIN 23
-#define ECHO_PIN 24
 #define MIN_DISTANCE 0
 #define MAX_DISTANCE 200
 
@@ -19,7 +18,15 @@ long pulseIn(int pin, int value) {
 
 int main() {
     long nanoPulseWidth, lastGood = MIN_DISTANCE, distance;
+    int TRIGGER_PIN, ECHO_PIN;
+    char *pin;
     setvbuf(stdout, NULL, _IOLBF, NULL);
+
+    pin = getenv("TRIGGER_PIN");
+    TRIGGER_PIN = atoi(pin);
+    pin = getenv("ECHO_PIN");
+    ECHO_PIN = atoi(pin);
+
     wiringPiSetupGpio();
     pinMode(TRIGGER_PIN, OUTPUT);
     pinMode(ECHO_PIN, INPUT);
