@@ -17,14 +17,14 @@ io.on("connection", function(socket) {
     console.log("client connected!");
 });
 
-var has_warned = false;
+var hasWarned = false;
 var lastMessage = 0;
 sonar.stdout.on("data", function(data) {
     var measurement = parseInt(data);
     io.emit("measurement", measurement)
-    if (!has_warned && measurement > WARNING_DISTANCE) {
+    if (!hasWarned && measurement > WARNING_DISTANCE) {
         console.log("door open", measurement);
-        has_warned = true;
+        hasWarned = true;
 
         if (+new Date() - lastMessage >= MSG_INTERVAL) {
             twilio.messages.create({
@@ -43,7 +43,7 @@ sonar.stdout.on("data", function(data) {
         }
     }
     else if (measurement <= WARNING_DISTANCE) {
-        has_warned = false;
+        hasWarned = false;
     }
 });
 
