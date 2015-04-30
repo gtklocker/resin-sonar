@@ -13,6 +13,6 @@ RUN git clone git://git.drogon.net/wiringPi \
 ADD . /app
 
 RUN cd /app \
-    && make
+    && make all
 
 CMD ["nodejs", "/app/server.js"]
