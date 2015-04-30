@@ -4,6 +4,8 @@
 
 #define TRIGGER_PIN 23
 #define ECHO_PIN 24
+#define MIN_DISTANCE 0
+#define MAX_DISTANCE 200
 
 long pulseIn(int pin, int value) {
     struct timespec start, end;
@@ -16,6 +18,7 @@ long pulseIn(int pin, int value) {
 }
 
 int main() {
+    long nanoPulseWidth, lastGood = MIN_DISTANCE, distance;
     setvbuf(stdout, NULL, _IOLBF, NULL);
     wiringPiSetupGpio();
     pinMode(TRIGGER_PIN, OUTPUT);
@@ -29,9 +32,13 @@ int main() {
         delayMicroseconds(10);
 
         digitalWrite(TRIGGER_PIN, LOW);
-        long nanoPulseWidth = pulseIn(ECHO_PIN, 1);
-        long distance = (nanoPulseWidth * 0.001) / 58.2;
-        printf("%ld\n", distance);
+        nanoPulseWidth = pulseIn(ECHO_PIN, 1);
+        distance = (nanoPulseWidth * 0.001) / 58.2;
+        if (distance >= MIN_DISTANCE && distance <= MAX_DISTANCE) {
+            lastGood = distance;
+        }
+
+        printf("%ld\n", lastGood);
 
         delay(50);
     }
