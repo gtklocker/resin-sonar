@@ -1,11 +1,11 @@
 {
-  "name": "rpi-sonar",
-  "description": "Simple rpi app the utilizes the ultrasonic sonar",
+  "name": "resin-sonar",
+  "description": "Know when your door has been opened with this resin app on your Raspberry Pi!",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/gtklocker/resin-sonar.git"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "express": "^4.12.3",
     "socket.io": "^1.3.5",
